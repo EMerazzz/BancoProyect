@@ -54,14 +54,5 @@ public class ClientesRepository implements IClientesRepository{
 
         });
     }
-    @Override
-    public Clientes findbyUser(String usuario) {
-        String SQL = "SELECT * FROM CLIENTES WHERE usuario = ?";
-        try {
-            return jdbcTemplate.queryForObject(SQL, new Object[]{usuario}, BeanPropertyRowMapper.newInstance(Clientes.class));
-        } catch (EmptyResultDataAccessException ex) {
-
-            return null;
-        }
-    }
+  
 }

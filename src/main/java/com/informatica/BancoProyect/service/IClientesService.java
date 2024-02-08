@@ -9,5 +9,4 @@ public interface IClientesService {
     public int save(Clientes clientes);
     public int update(Clientes clientes);
 
-    Clientes findbyUser(String usuario);
 }

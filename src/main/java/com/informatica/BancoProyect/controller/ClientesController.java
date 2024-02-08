@@ -22,44 +22,18 @@ public class ClientesController {
         return new ResponseEntity<>(result, HttpStatus.OK);
 
     }
-    @GetMapping("/find/{usuario}")
-    public ResponseEntity<Clientes> findByUser(@PathVariable String usuario){
 
-        System.out.println("usuario: " + usuario);
-        var result = iClientesService.findbyUser(usuario);
-
-        if(result != null) {
-            return new ResponseEntity<>(result, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
     @PostMapping("/save")
     public ResponseEntity<ServiceResponse> save(@RequestBody Clientes clientes){
         ServiceResponse serviceResponse = new ServiceResponse();
-      //  System.out.println("data usuario: " + clientes);
+        int result = iClientesService.save(clientes);
+        if (result == 1){
+            serviceResponse.setMessage("Agregado exitosamente");
 
-        Clientes busquedaCliente=iClientesService.findbyUser(clientes.getUsuario());
-        System.out.println("busquedaCliente: " + busquedaCliente);
-
-        if(busquedaCliente!=null)
-        {
-            serviceResponse.setMessage("Usuario ya existe");
-            serviceResponse.setSuccess(false);
-        }
-        else
-        {
-            System.out.println("antes del guardado: " + clientes);
-
-            int result = iClientesService.save(clientes);
-            if(result == 1){
-                serviceResponse.setMessage("Agregado Exitosamente");
-                serviceResponse.setSuccess(true);
-            }
         }
         return new ResponseEntity<>(serviceResponse, HttpStatus.OK);
-    }
 
+    }
     @PutMapping("/update")
     public ResponseEntity<ServiceResponse> update(@RequestBody Clientes clientes){
         ServiceResponse serviceResponse = new ServiceResponse();

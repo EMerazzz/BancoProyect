@@ -46,9 +46,6 @@ public class ClientesService implements IClientesService{
         }
         return row;
     }
-    @Override
-    public Clientes findbyUser(String usuario) {
-        return iClientesRepository.findbyUser(usuario);
-    }
+
 }
 

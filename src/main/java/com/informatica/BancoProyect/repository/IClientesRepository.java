@@ -7,9 +7,6 @@ import java.util.List;
 public interface IClientesRepository {
     public List<Clientes> findAll();
     public int save(Clientes clientes);
-
-
     public int update(Clientes clientes);
 
-    public Clientes findbyUser(String usuario);
 }

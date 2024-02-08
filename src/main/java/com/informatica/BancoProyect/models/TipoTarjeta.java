@@ -6,5 +6,5 @@ import java.math.BigDecimal;
 public class TipoTarjeta {
    int codTipoTarjeta;
    String nombreTarjeta;
-   BigDecimal RestriccionCredito;
+   int RestriccionCredito;
 }

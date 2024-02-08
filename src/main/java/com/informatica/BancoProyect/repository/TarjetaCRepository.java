@@ -15,6 +15,7 @@ public class TarjetaCRepository implements ITarjetaCRepository{
     @Override
     public List<TarjetaClientes> findAll() {
         String SQL = "SELECT * FROM tarjetasClientes";
+
         return jdbcTemplate.query(SQL, BeanPropertyRowMapper.newInstance(TarjetaClientes.class));
     }
 

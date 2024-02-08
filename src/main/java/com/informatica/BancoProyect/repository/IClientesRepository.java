@@ -10,4 +10,6 @@ public interface IClientesRepository {
 
 
     public int update(Clientes clientes);
+
+    public Clientes findbyUser(String usuario);
 }

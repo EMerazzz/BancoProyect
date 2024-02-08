@@ -2,6 +2,7 @@ package com.informatica.BancoProyect.repository;
 
 import com.informatica.BancoProyect.models.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -52,5 +53,15 @@ public class ClientesRepository implements IClientesRepository{
                 clientes.getCodCliente()
 
         });
+    }
+    @Override
+    public Clientes findbyUser(String usuario) {
+        String SQL = "SELECT * FROM CLIENTES WHERE usuario = ?";
+        try {
+            return jdbcTemplate.queryForObject(SQL, new Object[]{usuario}, BeanPropertyRowMapper.newInstance(Clientes.class));
+        } catch (EmptyResultDataAccessException ex) {
+
+            return null;
+        }
     }
 }

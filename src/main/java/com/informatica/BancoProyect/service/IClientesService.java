@@ -8,4 +8,6 @@ public interface IClientesService {
     public List<Clientes> findAll();
     public int save(Clientes clientes);
     public int update(Clientes clientes);
+
+    Clientes findbyUser(String usuario);
 }
